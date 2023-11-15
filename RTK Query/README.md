@@ -1,8 +1,10 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## React JS - API Call and CRUD using Redux Toolkit Complete
+### Tutorial - https://www.youtube.com/watch?v=SKyEUS4heS0
+#### To Run this Project Follow below Steps:-
+* Download the Project then open it with your IDE/Code Editor
+* Open terminal then change director to Project Folder
+* Then run below commands
+```bash
+npm install 
+npm start
+```
