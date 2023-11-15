@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-
 function App() {
   const [myObject, setMyObject] = useState({
     name: "Anurag",

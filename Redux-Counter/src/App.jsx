@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { incNumber, decNumber } from './actions/index';
 
@@ -7,8 +6,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   return (
-
-    <div className="card"  style={{width:'100vw',height:'100vh',display:'flex',justifyContent:'center',alignItems:'center' }}>
+ <div className="card"  style={{width:'100vw',height:'100vh',display:'flex',justifyContent:'center',alignItems:'center' }}>
     <div className="container">
       <h1>Redux Counter</h1>
 

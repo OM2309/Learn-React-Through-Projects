@@ -7,7 +7,7 @@ import MyCarousel from "../components/MyCarousel";
 export const Home = () => {
   return (
     <>
-      <Header />
+     <Header />
       <MyCarousel/>
       <div style={{ gap: "1rem" }} className="d-flex ">
         <MyCard />
