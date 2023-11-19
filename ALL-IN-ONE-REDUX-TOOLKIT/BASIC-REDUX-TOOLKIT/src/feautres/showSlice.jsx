@@ -1,13 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    value : 0
+  value: 1,
 };
 
 export const showSlice = createSlice({
-    name: 'showdata',
-    initialState,
-    reducers:{
+  name: "showData",
+  initialState,
+  reducers: {
+    incrementValue: (state) => {
+      state.value += 1; // Updating the state value
+    },
+  },
+});
 
-    }
-})
+export const { incrementValue } = showSlice.actions;
+export default showSlice.reducer;
