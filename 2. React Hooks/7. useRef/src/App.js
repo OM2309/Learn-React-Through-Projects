@@ -4,7 +4,7 @@ import { useRef } from "react";
 function App() {
   const inputElement = useRef(null);
 
-  const focusInput = () => {
+ const focusInput = () => {
     inputElement.current.focus();
     inputElement.current.value = "HuXn";
   };
