@@ -10,7 +10,7 @@ const App = () => {
     <div className="container">
       <h1>Redux Counter</h1>
 
-      <div className="action">
+     <div className="action">
         <a href="#" title="Decrement" onClick={() => dispatch(decNumber())}>
           <span style={{ marginRight: '8px', fontSize: '40px' }}>-</span>
         </a>
