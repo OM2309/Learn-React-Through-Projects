@@ -7,12 +7,66 @@ export const postApi = createApi({
   }),
   endpoints: (builder) => ({
     getAllPost: builder.query({
-        query:()=>({
-            url:'posts',
-            method: 'GET'
-        })
-    })
+      query: () => ({
+        url: "posts",
+        method: "GET",
+      }),
+    }),
+
+    getPostById: builder.query({
+      query: (id) => ({
+        url: `posts/${id}`,
+        method: "GET",
+      }),
+    }),
+
+    getPostByLimit: builder.query({
+      query: (num) => ({
+        url: `posts?_limit=${num}`,
+        method: "GET",
+      }),
+    }),
+
+    deletePost: builder.mutation({
+      query: (id) => ({
+        url: `posts/${id}`,
+        method: "DELETE",
+      }),
+    }),
+
+    createPost: builder.mutation({
+      query: (body) => ({
+        url: `posts`,
+        method: "POST",
+        body: body,
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }),
+    }),
+
+    updatePost: builder.mutation({
+      query: (updatePostData) => {
+        const {id ,...data} = updatePostData
+        return {
+          url: `posts/${id}`,
+          method: "PUT",
+          body: data,
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        };
+      },
+    }),
+    
   }),
 });
 
-export const { useGetAllPostQuery }  = postApi
+export const {
+  useGetAllPostQuery,
+  useGetPostByIdQuery,
+  useGetPostByLimitQuery,
+  useDeletePostMutation,
+  useCreatePostMutation,
+  useUpdatePostMutation,
+} = postApi;

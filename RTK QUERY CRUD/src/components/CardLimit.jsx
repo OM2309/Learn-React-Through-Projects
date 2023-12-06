@@ -1,7 +1,7 @@
-import { useGetAllPostQuery } from "../services/post";
+import { useGetPostByLimitQuery } from "../services/post";
 
-const Card = () => {
-  const { data, isLoading } = useGetAllPostQuery();
+const CardLimit = () => {
+  const { data, isLoading } = useGetPostByLimitQuery(5);
 
   return (
     <div className="flex items-center justify-center mt-4 flex-wrap">
@@ -45,4 +45,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default CardLimit;
