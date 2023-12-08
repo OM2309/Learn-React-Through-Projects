@@ -3,7 +3,8 @@ import { useGetAllPostQuery } from "../services/post";
 const Card = () => {
   const { data, isLoading } = useGetAllPostQuery();
 
-  return (
+  
+return (
     <div className="flex items-center justify-center mt-4 flex-wrap">
       {isLoading ? (
         <div role="status">
