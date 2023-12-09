@@ -5,7 +5,8 @@ const Card = () => {
   const { data, isLoading } = useGetAllPostQuery();
   // console.log(data1);
 
-  return (
+  
+return (
     <div className="flex items-center justify-center mt-4 flex-wrap">
       {isLoading ? (
         <div role="status">
