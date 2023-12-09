@@ -46,17 +46,14 @@ export const postApi = createApi({
     }),
 
     updatePost: builder.mutation({
-      query: (updatePostData) => {
-        const {id ,...data} = updatePostData
-        return {
-          url: `posts/${id}`,
-          method: "PUT",
-          body: data,
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        };
-      },
+      query: (updatedPost) => ({
+        url: `posts/${updatedPost.userId}`,
+        method: "PUT",
+        body: updatedPost,
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }),
     }),
     
   }),

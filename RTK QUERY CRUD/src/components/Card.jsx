@@ -1,7 +1,9 @@
 import { useGetAllPostQuery } from "../services/post";
 
 const Card = () => {
+  // const data1 = useGetAllPostQuery()
   const { data, isLoading } = useGetAllPostQuery();
+  // console.log(data1);
 
   return (
     <div className="flex items-center justify-center mt-4 flex-wrap">

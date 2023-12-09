@@ -7,6 +7,7 @@ const CardUpdate = () => {
 
   const handleUpdatePost = async () => {
     const updated = {
+      
       title: "foo",
       body: "bar",
       userId: 1,

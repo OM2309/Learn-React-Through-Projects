@@ -1,7 +1,7 @@
-// import Card from "./components/Card";
+import Card from "./components/Card";
 
 // import CardCreate from "./components/CardCreate";
-import CardUpdate from "./components/CardUpdate";
+// import CardUpdate from "./components/CardUpdate";
 
 // import CardDelete from "./components/CardDelete";
 
@@ -12,12 +12,12 @@ import CardUpdate from "./components/CardUpdate";
 const App = () => {
   return (
     <>
-      {/* <Card/> */}
+      <Card/>
       {/* <CardId/> */}
       {/* <CardLimit/> */}
       {/* <CardDelete/> */}
       {/* <CardCreate/> */}
-      <CardUpdate/>
+      {/* <CardUpdate/> */}
     </>
   );
 };
