@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
+import bodyParser from 'body-parser'
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoute.js";
 const app = express();
@@ -8,6 +9,7 @@ const app = express();
 // middleware
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use("/api/v1/auth", authRoutes);
 
 const port = process.env.PORT || 3000;

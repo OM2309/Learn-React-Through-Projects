@@ -1,5 +1,7 @@
 import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { comparePassword } from "../helper/authHelper.js";
 
 const registerController = async (req, res) => {
   try {
@@ -46,4 +48,60 @@ const registerController = async (req, res) => {
   }
 };
 
-export { registerController };
+const loginController = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email or password",
+      });
+    }
+
+    const user = await userModel.findOne({ email: email });
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "Email is not available",
+      });
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid password",
+      });
+    }
+
+    // Token
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Login successful",
+      user: {
+        name: user.name,
+        email: user.email,
+      },
+      token,
+    });
+  } catch (error) {
+    console.log("Error in login" + error.message);
+    res.status(500).json({
+      success: false,
+      message: "Error in login",
+      error: error.message,
+    });
+  }
+};
+
+const testController = async (req, res) => {
+  res.json({
+    "success:": "true",
+  });
+};
+
+export { registerController, loginController, testController };
