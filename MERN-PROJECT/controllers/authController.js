@@ -18,7 +18,7 @@ const registerController = async (req, res) => {
     if (existingUser) {
       return res.status(409).json({
         success: false,
-        message: "User already exists",
+        message: "User with this email already exists",
       });
     }
 
@@ -54,7 +54,7 @@ const loginController = async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({
         success: false,
-        message: "Invalid email or password",
+        message: "Please provide both email and password",
       });
     }
 
@@ -62,7 +62,7 @@ const loginController = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "Email is not available",
+        message: "User with this email not found",
       });
     }
 
@@ -89,7 +89,7 @@ const loginController = async (req, res) => {
       token,
     });
   } catch (error) {
-    console.log("Error in login" + error.message);
+    console.error("Error in login:", error.message);
     res.status(500).json({
       success: false,
       message: "Error in login",
@@ -100,7 +100,8 @@ const loginController = async (req, res) => {
 
 const testController = async (req, res) => {
   res.json({
-    "success:": "true",
+    success: true,
+    message: "Test successful",
   });
 };
 
