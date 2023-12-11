@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <>
-    <footer className="fixed bottom-0 w-full bg-white">
+    <footer className="bottom-0 w-full bg-white">
       <hr className="my-4" />
       <section className="relative overflow-hidden bg-white py-4">
         <div className="container relative z-10 mx-auto px-4">
