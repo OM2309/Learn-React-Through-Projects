@@ -1,7 +1,7 @@
 import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import validator from 'validator';
+import validator from "validator";
 import { comparePassword } from "../helper/authHelper.js";
 
 const registerController = async (req, res) => {
@@ -23,7 +23,7 @@ const registerController = async (req, res) => {
       });
     }
 
-    const existingUser = await userModel.findOne({ email:email });
+    const existingUser = await userModel.findOne({ email: email });
     if (existingUser) {
       return res.status(409).json({
         success: false,
@@ -46,9 +46,7 @@ const registerController = async (req, res) => {
       message: "User registered successfully",
       user: savedUser,
     });
-  } 
-  
-  catch (error) {
+  } catch (error) {
     console.error("Error in registration:", error);
     return res.status(500).json({
       success: false,
@@ -85,7 +83,7 @@ const loginController = async (req, res) => {
     }
 
     // Token
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
@@ -109,6 +107,17 @@ const loginController = async (req, res) => {
 };
 
 const testController = async (req, res) => {
+
+
+  
+  // const jwt = req.headers.authorization
+  // const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  // const userID = decoded;
+  
+  const userID = req.user.id;
+  const loginUser = await userModel.findOne({ _id: userID });
+  console.log(loginUser);
+
   res.json({
     success: true,
     message: "Test successful",

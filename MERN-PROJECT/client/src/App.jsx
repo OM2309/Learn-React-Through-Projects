@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Login from "./pages/Auth/Login";
 
 const App = () => {
   // Function to trigger a sample toast notification
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/register" element={<Register />} />
         <Route path="/*" element={<PageNotFound />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
       <ToastContainer /> {/* Place the ToastContainer at the root of your app */}

@@ -12,7 +12,7 @@ const requireSignIn = async (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     // If you need to pass the decoded token to the next middleware or route handlers:
-    req.user = decoded;
+    req.user = decoded; // not complusary but 
 
     next();
   } catch (err) {
@@ -37,3 +37,14 @@ const isAdmin = async (req, res, next) => {
 };
 
 export { requireSignIn, isAdmin };
+
+
+
+/* 
+req = {
+  headers: {},
+  body: {},
+  config: {},
+  // user: {},
+}
+*/

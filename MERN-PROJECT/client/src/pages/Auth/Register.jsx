@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 const Register = () => {
   const [name, setName] = useState("");
@@ -15,7 +15,7 @@ const Register = () => {
     e.preventDefault();
     console.log(name, email, password, phone, address);
     try {
-      const res = await axios.post("/api/v1/auth/register", {
+      const response = await axios.post("/api/v1/auth/register", {
         name,
         email,
         password,
@@ -23,17 +23,24 @@ const Register = () => {
         address,
       });
 
-      if (res.data.success) {
-        toast.success(res.data.message);
-        navigate('/login ')
+      /* 
+      {
+        success: true,
+      message: "User registered successfully",
+      user: savedUser,
+      }
+      */
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+        navigate("/login");
       } else {
-        toast.error(res.data.message);
+        toast.error(response.data.message);
       }
     } catch (err) {
       console.log("Error", err);
+      toast.error(err.response.data.message)
     }
-
-    toast.success("Registration Success");
   };
 
   return (
@@ -143,13 +150,13 @@ const Register = () => {
               </h2>
               <p className="mt-2 text-base text-gray-600">
                 Already have an account?
-                <a
-                  href="#"
+                <NavLink
+                 to ='/login'
                   title=""
                   className="font-medium text-black transition-all duration-200 hover:underline"
                 >
                   Sign In
-                </a>
+                </NavLink>
               </p>
               <form onSubmit={handleSubmit} className="mt-2">
                 <div className="space-y-5">
