@@ -1,10 +1,11 @@
-import  { useState, useContext, createContext } from "react";
+// auth.js
+
+import { useState, useContext, createContext } from "react";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
-    
     user: null,
     token: "",
   });
@@ -16,6 +17,12 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-const useAuth = () => useContext(AuthContext);
+const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return [context.auth, context.setAuth]; // Return auth state and setAuth function as an array
+};
 
 export { useAuth, AuthProvider };
